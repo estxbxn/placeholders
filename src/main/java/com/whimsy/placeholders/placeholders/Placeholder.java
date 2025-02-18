@@ -1,7 +1,8 @@
-package com.whimsy.placeholders.placeholders.impl;
+package com.whimsy.placeholders.placeholders;
 
 import com.whimsy.placeholders.PlaceholderManager;
-import com.whimsy.placeholders.placeholders.IPlaceholder;
+
+import java.util.function.Supplier;
 
 /**
  * Generic class for defining a placeholder.
@@ -11,17 +12,17 @@ import com.whimsy.placeholders.placeholders.IPlaceholder;
 public class Placeholder<T> implements IPlaceholder {
 
     private final String identifier;
-    private final T value;
+    private final Supplier<T> valueProvider;
 
-    public Placeholder(String identifier, T value) {
+    public Placeholder(String identifier, Supplier<T> valueProvider) {
         this.identifier = identifier;
-        this.value = value;
+        this.valueProvider = valueProvider;
         PlaceholderManager.registerPlaceholder(this.identifier, this);
     }
 
     @Override
     public String getValue() {
-        return value.toString();
+        return valueProvider.get().toString();
     }
 
     @Override

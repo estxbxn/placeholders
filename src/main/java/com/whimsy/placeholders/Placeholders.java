@@ -1,20 +1,36 @@
-import org.bukkit.plugin.java.JavaPlugin;
+package com.whimsy.placeholders;
 
-public class Placeholders extends JavaPlugin {
+import com.whimsy.placeholders.placeholders.Placeholder;
 
-    private static Placeholders instance;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
-    @Override
-    public void onEnable() {
-        instance = this;
-    }
+/**
+ * Main class for demonstrating the placeholder system.
+ */
+public class Placeholders {
 
-    @Override
-    public void onDisable() {
-        //
-    }
+    public static void main(String[] args) {
+        new Placeholder<>("date", LocalDate::now);
+        new Placeholder<>("greeting", () -> "Hello, Guest!");
 
-    public static Placeholders get() {
-        return instance;
+        ArrayList<String> inventory = new ArrayList<>(Arrays.asList("Sword", "Shield", "Potion"));
+        new Placeholder<>("inventory", () -> inventory.stream().collect(Collectors.joining(", ")));
+
+        ArrayList<String> products = new ArrayList<>(Arrays.asList("Apple", "Banana", "Cherry"));
+        new Placeholder<>("products", () -> products.stream().collect(Collectors.joining(". ")));
+
+        String template = """
+                
+                Today's date is {date}. {greeting}.
+                
+                Your inventory contains: {inventory}.
+                
+                Products: {products}.""";
+        String result = PlaceholderManager.processString(template);
+
+        System.out.println(result);
     }
 }
