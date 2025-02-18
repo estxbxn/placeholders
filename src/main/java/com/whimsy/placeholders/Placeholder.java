@@ -1,6 +1,4 @@
-package com.whimsy.placeholders.placeholders;
-
-import com.whimsy.placeholders.PlaceholderManager;
+package com.whimsy.placeholders;
 
 import java.util.function.Supplier;
 

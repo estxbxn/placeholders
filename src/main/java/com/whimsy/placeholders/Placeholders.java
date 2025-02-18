@@ -1,7 +1,5 @@
 package com.whimsy.placeholders;
 
-import com.whimsy.placeholders.placeholders.Placeholder;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;

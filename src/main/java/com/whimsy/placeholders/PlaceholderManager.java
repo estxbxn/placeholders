@@ -1,7 +1,5 @@
 package com.whimsy.placeholders;
 
-import com.whimsy.placeholders.placeholders.IPlaceholder;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.whimsy.placeholders.placeholders;
+package com.whimsy.placeholders;
 
 /**
  * Interface for defining a placeholder.
